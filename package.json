@@ -1,0 +1,72 @@
+{
+  "name": "redux-portal-boilerplate",
+  "version": "0.0.1",
+  "author": "anvk",
+  "description": "A boilerplate to create a portal website using Redux technology.",
+  "contributors": [
+    {
+      "name": "Alexey Novak",
+      "email": "alexey.novak.mail@gmail.com"
+    }
+  ],
+  "scripts": {
+    "devServer": "./node_modules/.bin/webpack-dev-server -d --progress -colors --hot",
+    "webpackProd": "./node_modules/.bin/webpack --config webpack-production.config -p",
+    "webpackDev": "./node_modules/.bin/webpack  -d",
+    "start": "./node_modules/.bin/gulp && npm run devServer",
+    "production": "./node_modules/.bin/gulp && npm run webpackProd",
+    "dev": "./node_modules/.bin/gulp && npm run webpackDev"
+  },
+  "directories": {
+    "test": "test",
+    "dist": "dist",
+    "src": "src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:anvk/redux-portal-boilerplate.git"
+  },
+  "keywords": [],
+  "dependencies": {
+    "bootstrap": "3.3.5",
+    "history": "1.17.0",
+    "jquery": "2.1.4",
+    "lodash": "3.10.1",
+    "node-polyglot": "0.4.4",
+    "promise": "7.1.1",
+    "react": "0.14.2",
+    "react-dom": "0.14.2",
+    "react-redux": "4.0.6",
+    "react-router": "1.0.0",
+    "redux": "3.0.5",
+    "redux-logger": "2.3.2",
+    "redux-simple-router": "2.0.3",
+    "redux-thunk": "1.0.3",
+    "superagent": "1.4.0",
+    "toastr": "2.1.2"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "3.1.0",
+    "babel-core": "6.3.15",
+    "babel-loader": "6.2.0",
+    "babel-preset-es2015": "6.1.18",
+    "babel-preset-react": "6.1.18",
+    "babel-preset-stage-0": "6.3.13",
+    "css-loader": "0.23.0",
+    "del": "2.2.0",
+    "file-loader": "0.8.5",
+    "gulp": "3.9.0",
+    "gulp-babel": "6.1.2",
+    "json-loader": "0.5.4",
+    "less-loader": "2.2.2",
+    "run-sequence": "1.1.5",
+    "sass-loader": "3.1.2",
+    "style-loader": "0.13.0",
+    "url-loader": "0.5.7",
+    "webpack": "1.12.6",
+    "webpack-dev-server": "1.14.0"
+  },
+  "engine": "node >= 0.10.x",
+  "private": false,
+  "license": "MIT"
+}
