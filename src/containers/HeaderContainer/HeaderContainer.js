@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { routeActions } from 'redux-simple-router';
-import Header from '../components/Header.js';
+import { Header } from '../../components';
 
 function mapStateToProps(state) {
   const {

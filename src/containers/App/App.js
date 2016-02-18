@@ -8,8 +8,8 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { routeActions } from 'redux-simple-router';
-import HeaderContainer from '../HeaderContainer.js';
-import Footer from '../../components/Footer/Footer.js';
+import { HeaderContainer } from '../';
+import { Footer } from '../../components';
 
 class App extends Component {
   render() {

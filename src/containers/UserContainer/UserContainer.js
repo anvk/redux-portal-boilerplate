@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { changeValue } from '../actions/userActions.js';
-import User from '../components/User.js';
-import { profession } from '../../config/config.json';
+import { changeValue } from '../../actions/userActions.js';
+import { User } from '../../components';
+import { profession } from '../../../config/config.json';
 
 function mapStateToProps(state) {
   const {

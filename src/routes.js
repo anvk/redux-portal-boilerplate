@@ -2,11 +2,8 @@ import React from 'react';
 import { Router, Route, IndexRoute } from 'react-router';
 import history from './history.js';
 
-import App from './containers/App/App.js';
-import Home from './components/Home.js';
-import CounterContainer from './containers/CounterContainer.js';
-import UserContainer from './containers/UserContainer.js';
-import NotFoundPage from './components/NotFoundPage.js';
+import { App, CounterContainer, UserContainer } from './containers';
+import { Home, NotFoundPage } from './components';
 
 const routes = (
   <Router history={history}>

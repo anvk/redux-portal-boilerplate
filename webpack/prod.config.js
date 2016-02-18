@@ -1,24 +1,45 @@
+'use strict';
+
 var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var version = require('../package.json').version;
 
 module.exports = {
-  context: path.resolve('src'),
-  entry: './index.js',
+  entry: [
+    './src/index.js'
+  ],
+
   output: {
-    path: path.resolve('dist/'),
+    path: path.resolve('dist'),
     filename: 'scripts/bundle.js'
   },
 
-  devServer: {
-    contentBase: 'dist',
-    historyApiFallback: true
-  },
-
   plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      output: {
+        comments: false
+      },
+      compressor: {
+        warnings: false
+      }
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      APP_VERSION: JSON.stringify(version)
+    }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
       'window.jQuery': 'jquery'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: './static/templates/index.html',
+      inject: true,
+      favicon: './static/images/favicon.ico'
     })
   ],
 
