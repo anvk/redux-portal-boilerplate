@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Counter from '../components/Counter.js';
-import * as counterActions from '../actions/counterActions.js';
+import { Counter } from '../../components';
+import * as counterActions from '../../actions/counterActions.js';
 
 function mapStateToProps(state) {
   const { counter } = state;

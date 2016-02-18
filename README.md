@@ -5,7 +5,6 @@
 ##Technology Used for This Project
  - [Node](https://nodejs.org/en/)
  - [Webpack](https://webpack.github.io/)
- - [Gulp](http://gulpjs.com/)
  - [React](http://facebook.github.io/react/)
  - [Redux](http://redux.js.org/)
  - [Bootstrap] (http://getbootstrap.com/)
@@ -29,13 +28,19 @@ $ npm start
 ## How to Build Development Version
 
 ```
-$ npm run dev
+$ npm run build:dev
 ```
 
 ## How to Build Production Version
 
 ```
-$ npm run dproduction
+$ npm run build:prod
+```
+
+## Linting
+
+```
+$ npm run lint
 ```
 
 ## License
