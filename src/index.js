@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import routes from './routes.js';
-import * as InitializeActions from './actions/initializeActions';
+import { initApp } from './actions/initializeActions';
+import configureStore from './store/configureStore.js';
 
-import store from './stores/appStore.js';
+const store = configureStore();
 
-store.dispatch(InitializeActions.initApp());
+// init dispatch !
+// Pull data here before rendering anything
+store.dispatch(initApp());
 
 ReactDOM.render(
   <Provider store={store}>

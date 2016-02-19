@@ -3,6 +3,9 @@ var express = require('express');
 var webpack = require('webpack');
 var config = require('./webpack/dev.config');
 
+// add hot-reload
+config.entry.push('webpack-hot-middleware/client?reload=true');
+
 var app = express();
 var compiler = webpack(config);
 
