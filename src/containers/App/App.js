@@ -5,7 +5,6 @@ require('../../../node_modules/bootstrap/dist/js/bootstrap.min.js');
 require('./app.less');
 
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { routeActions } from 'redux-simple-router';
 import { HeaderContainer } from '../';

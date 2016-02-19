@@ -5,7 +5,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var version = require('../package.json').version;
 
-common.plugins.concat([
+common.plugins = [
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.optimize.DedupePlugin(),
   new webpack.optimize.UglifyJsPlugin({
@@ -31,6 +31,6 @@ common.plugins.concat([
     inject: true,
     favicon: './static/images/favicon.ico'
   })
-]);
+];
 
 module.exports = common;
