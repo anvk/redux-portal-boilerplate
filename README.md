@@ -1,12 +1,13 @@
 # redux-portal-boilerplate
 
-> A boilerplate to create a portal website using Redux technology.
+> A boilerplate to create a portal website using Redux & Bootstrap & Redux Dev Tools Extension.
 
 ##Technology Used for This Project
  - [Node](https://nodejs.org/en/)
  - [Webpack](https://webpack.github.io/)
  - [React](http://facebook.github.io/react/)
  - [Redux](http://redux.js.org/)
+ - [Redux Dev Tools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
  - [Bootstrap] (http://getbootstrap.com/)
  - [ES6 by Babel](https://babeljs.io/)
  - [LESS](http://lesscss.org/)
