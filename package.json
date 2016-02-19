@@ -1,8 +1,8 @@
 {
   "name": "redux-portal-boilerplate",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "anvk",
-  "description": "A boilerplate to create a portal website using Redux technology.",
+  "description": "A boilerplate to create a portal website using Redux & Bootstrap.",
   "contributors": [
     {
       "name": "Alexey Novak",
@@ -24,7 +24,13 @@
     "type": "git",
     "url": "git@github.com:anvk/redux-portal-boilerplate.git"
   },
-  "keywords": [],
+  "keywords": [
+    "redux",
+    "boilerplate",
+    "portal",
+    "bootstrap",
+    "webpack"
+  ],
   "dependencies": {
     "bootstrap": "3.3.5",
     "history": "1.17.0",
@@ -32,9 +38,9 @@
     "promise": "7.1.1",
     "react": "0.14.2",
     "react-dom": "0.14.2",
-    "react-redux": "4.0.6",
+    "react-redux": "4.4.0",
     "react-router": "1.0.0",
-    "redux": "3.0.5",
+    "redux": "3.3.1",
     "redux-logger": "2.3.2",
     "redux-simple-router": "2.0.3",
     "redux-thunk": "1.0.3",
@@ -50,19 +56,20 @@
     "css-loader": "0.23.0",
     "eslint": "2.1.0",
     "eslint-plugin-react": "3.16.1",
-    "express": "^4.13.4",
+    "express": "4.13.4",
     "file-loader": "0.8.5",
     "html-webpack-plugin": "2.9.0",
     "json-loader": "0.5.4",
     "less-loader": "2.2.2",
+    "redux-immutable-state-invariant": "1.2.0",
     "rimraf": "2.3.4",
     "sass-loader": "3.1.2",
     "style-loader": "0.13.0",
     "url-loader": "0.5.7",
     "webpack": "1.12.6",
-    "webpack-dev-middleware": "^1.5.1",
+    "webpack-dev-middleware": "1.5.1",
     "webpack-dev-server": "1.14.0",
-    "webpack-hot-middleware": "^2.7.1"
+    "webpack-hot-middleware": "2.7.1"
   },
   "engine": "node >= 0.10.x",
   "private": true,
