@@ -1,6 +1,6 @@
 {
   "name": "redux-portal-boilerplate",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "anvk",
   "description": "A boilerplate to create a portal website using Redux & Bootstrap & Redux Dev Tools Extension.",
   "contributors": [
@@ -12,6 +12,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint src",
+    "dev": "webpack-dev-server -d --config webpack/dev.config.js",
     "build:prod": "npm run clean && webpack --config ./webpack/prod.config -p",
     "build:dev": "npm run clean && webpack --config ./webpack/dev.config -d"
   },
