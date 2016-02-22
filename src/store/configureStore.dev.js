@@ -16,7 +16,6 @@ export default function configureStore(initialState) {
   )(createStore);
 
   const store = finalCreateStore(rootReducer, initialState);
-  //const store = createStore(rootReducer, initialState, enhancer);
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
