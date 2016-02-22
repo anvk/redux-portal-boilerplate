@@ -1,11 +1,11 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import history from '../history.js';
-import { syncHistory } from 'redux-simple-router';
 import rootReducer from '../reducers/index.js';
+import { syncHistory } from 'react-router-redux';
+import { browserHistory } from 'react-router';
 
 // Sync dispatched route actions to the history
-const reduxRouterMiddleware = syncHistory(history);
+const reduxRouterMiddleware = syncHistory(browserHistory);
 
 // Middleware you want to use in production:
 const enhancer = compose(

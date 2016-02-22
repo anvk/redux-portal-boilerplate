@@ -3,11 +3,9 @@ import { connect } from 'react-redux';
 import { Counter } from '../../components';
 import * as counterActions from '../../actions/counterActions.js';
 
-function mapStateToProps(state) {
-  const { counter } = state;
-
+function mapStateToProps(state, ownProps) {
   return {
-    counter
+    counter: state.counter || parseInt(ownProps.params.counterNum, 10)
   };
 };
 

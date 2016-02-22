@@ -6,6 +6,10 @@ var config = require('./webpack/dev.config');
 // add hot-reload
 config.entry.push('webpack-hot-middleware/client?reload=true');
 
+// source maps
+// https://webpack.github.io/docs/configuration.html#devtool
+config.devtool = 'eval-source-map';
+
 var app = express();
 var compiler = webpack(config);
 

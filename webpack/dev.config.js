@@ -5,6 +5,11 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var version = require('../package.json').version;
 
+common.devServer = {
+  contentBase: 'dist/',
+  historyApiFallback: true
+};
+
 common.plugins = [
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoErrorsPlugin(),
