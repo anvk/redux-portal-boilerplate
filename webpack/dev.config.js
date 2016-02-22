@@ -1,16 +1,16 @@
 'use strict';
 
-var common = require('./common.config.js');
+var config = require('./common.config.js');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var version = require('../package.json').version;
 
-common.devServer = {
+config.devServer = {
   contentBase: 'dist/',
   historyApiFallback: true
 };
 
-common.plugins = [
+config.plugins = [
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoErrorsPlugin(),
   new webpack.DefinePlugin({
@@ -30,4 +30,4 @@ common.plugins = [
   })
 ];
 
-module.exports = common;
+module.exports = config;

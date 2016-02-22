@@ -6,17 +6,17 @@ import rootReducer from '../reducers/index.js';
 import { syncHistory } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 
-// Sync dispatched route actions to the history
-const reduxRouterMiddleware = syncHistory(browserHistory);
-
-// Middleware you want to use in production:
-const enhancer = compose(
-  applyMiddleware(invariant(), thunk, reduxRouterMiddleware, logger()),
-  window.devToolsExtension ? window.devToolsExtension() : f => f
-);
-
 export default function configureStore(initialState) {
-  const store = createStore(rootReducer, initialState, enhancer);
+  // Sync dispatched route actions to the history
+  const reduxRouterMiddleware = syncHistory(browserHistory);
+
+  const finalCreateStore = compose(
+    applyMiddleware(invariant(), thunk, reduxRouterMiddleware, logger()),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  )(createStore);
+
+  const store = finalCreateStore(rootReducer, initialState);
+  //const store = createStore(rootReducer, initialState, enhancer);
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

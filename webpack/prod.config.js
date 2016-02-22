@@ -1,11 +1,11 @@
 'use strict';
 
-var common = require('./common.config.js');
+var config = require('./common.config.js');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var version = require('../package.json').version;
 
-common.plugins = [
+config.plugins = [
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.optimize.DedupePlugin(),
   new webpack.optimize.UglifyJsPlugin({
@@ -33,4 +33,4 @@ common.plugins = [
   })
 ];
 
-module.exports = common;
+module.exports = config;

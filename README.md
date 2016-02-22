@@ -23,7 +23,7 @@ $ npm start
 ## How to Run Locally for Development
 
 ```
-$ npm start
+$ npm run dev
 ```
 
 ## How to Build Development Version
@@ -42,6 +42,12 @@ $ npm run build:prod
 
 ```
 $ npm run lint
+```
+
+## Running Tests
+
+```
+$ npm test
 ```
 
 ## License
