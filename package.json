@@ -12,7 +12,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint src",
-    "dev": "webpack-dev-server -d --config webpack/hot.dev.config.js",
+    "dev": "webpack-dev-server -d --config webpack/hot.dev.config",
     "build:prod": "npm run clean && webpack -p --progress --verbose --colors --display-error-details --config ./webpack/prod.config",
     "build:dev": "npm run clean && webpack -d --progress --verbose --colors --display-error-details --config ./webpack/dev.config",
     "test": "karma start"

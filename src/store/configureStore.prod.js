@@ -8,9 +8,6 @@ export default function configureStore(initialState) {
   // Sync dispatched route actions to the history
   const reduxRouterMiddleware = syncHistory(browserHistory);
 
-  // Sync dispatched route actions to the history
-  const reduxRouterMiddleware = syncHistory(browserHistory);
-
   const finalCreateStore = compose(
     applyMiddleware(thunk, reduxRouterMiddleware)
   )(createStore);
