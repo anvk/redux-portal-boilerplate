@@ -1,6 +1,6 @@
 {
   "name": "redux-portal-boilerplate",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "anvk",
   "description": "A boilerplate to create a portal website using Redux & Bootstrap & Redux Dev Tools Extension.",
   "contributors": [
@@ -12,9 +12,10 @@
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint src",
-    "dev": "webpack-dev-server -d --config webpack/dev.config.js",
-    "build:prod": "npm run clean && webpack --config ./webpack/prod.config -p",
-    "build:dev": "npm run clean && webpack --config ./webpack/dev.config -d"
+    "dev": "webpack-dev-server -d --config webpack/hot.dev.config.js",
+    "build:prod": "npm run clean && webpack -p --progress --verbose --colors --display-error-details --config ./webpack/prod.config",
+    "build:dev": "npm run clean && webpack -d --progress --verbose --colors --display-error-details --config ./webpack/dev.config",
+    "test": "karma start"
   },
   "directories": {
     "test": "test",
@@ -54,11 +55,18 @@
     "css-loader": "0.23.0",
     "eslint": "2.1.0",
     "eslint-plugin-react": "3.16.1",
+    "expect": "1.14.0",
     "express": "4.13.4",
     "file-loader": "0.8.5",
     "html-webpack-plugin": "2.9.0",
+    "jasmine-core": "2.4.1",
     "json-loader": "0.5.4",
+    "karma": "0.13.21",
+    "karma-chrome-launcher": "0.2.2",
+    "karma-mocha": "0.2.2",
+    "karma-webpack": "1.7.0",
     "less-loader": "2.2.2",
+    "mocha": "2.4.5",
     "redux-immutable-state-invariant": "1.2.0",
     "redux-logger": "2.3.2",
     "rimraf": "2.3.4",
