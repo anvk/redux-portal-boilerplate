@@ -1,4 +1,4 @@
-# redux-portal-boilerplate
+# Redux Portal Boilerplate
 
 > A boilerplate to create a portal website using Redux & Bootstrap & Redux Dev Tools Extension.
 
