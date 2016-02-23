@@ -13,13 +13,6 @@
  - [LESS](http://lesscss.org/)
  - [ES2015](https://babeljs.io/docs/learn-es2015/)
 
-## To Start the Portal
-
-```
-$ npm install
-$ npm start
-```
-
 ## How to Run Locally for Development
 
 ```
