@@ -14,7 +14,7 @@ function mapStateToProps(state) {
     firstName,
     lastName
   };
-};
+}
 
 class UserContainer extends Component {
   render() {
@@ -24,15 +24,24 @@ class UserContainer extends Component {
       changeValue
     } = this.props;
 
-    return <User
-      firstName={firstName}
-      lastName={lastName}
-      onChange={event => {
-        const { name, value } = event.target;
-        changeValue(name, value);
-      }}
-      profession={profession} />;
+    return (
+      <User
+        firstName={firstName}
+        lastName={lastName}
+        onChange={event => {
+          const { name, value } = event.target;
+          changeValue(name, value);
+        }}
+        profession={profession}
+      />
+    );
   }
+}
+
+UserContainer.propTypes = {
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  changeValue: PropTypes.func.isRequired
 };
 
 export default connect(

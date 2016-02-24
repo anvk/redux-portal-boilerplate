@@ -20,27 +20,31 @@ class App extends Component {
       <div>
         <HeaderContainer />
 
-        <div className='container'>
-          <div className='col-md-12 space-below'>
+        <div className="container">
+          <div className="col-md-12 space-below">
             <button
-              className='btn btn-default'
+              className="btn btn-default"
               onClick={() => pushRoute('/foo')}
             >
               Go to /foo
             </button>
           </div>
 
-          <div className='col-md-12'>{children}</div>
+          <div className="col-md-12">{children}</div>
         </div>
 
         <Footer />
       </div>
     );
   }
+}
+
+App.propTypes = {
+  children: PropTypes.object.isRequired,
+  pushRoute: PropTypes.func.isRequired
 };
 
-export default connect(
-  null,
+export default connect(undefined,
   {
     pushRoute: routeActions.push
   }

@@ -5,28 +5,27 @@ class Counter extends Component {
     const {
       onIncrement,
       onDecrement,
-      counter,
-      pushRoute
+      counter
     } = this.props;
 
     return (
-      <div className='col-md-12'>
-        <div className='row'>
+      <div className="col-md-12">
+        <div className="row">
           Counter set to: {counter}
         </div>
-        <div className='row'>
+        <div className="row">
           <button
-            type='button'
-            className='btn btn-default'
+            type="button"
+            className="btn btn-default"
             onClick={onIncrement}
           >
             Counter + 1
           </button>
         </div>
-        <div className='row'>
+        <div className="row">
           <button
-            type='button'
-            className='btn btn-default'
+            type="button"
+            className="btn btn-default"
             onClick={onDecrement}
           >
             Counter - 1
@@ -35,7 +34,7 @@ class Counter extends Component {
       </div>
     );
   }
-};
+}
 
 Counter.propTypes = {
   onIncrement: PropTypes.func.isRequired,

@@ -4,7 +4,7 @@ import { UPDATE_LOCATION } from 'react-router-redux';
 const initialState = null;
 
 export default function counter(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case types.INITIALIZE:
       return action.value;
     case UPDATE_LOCATION:
@@ -22,4 +22,4 @@ export default function counter(state = initialState, action) {
       // nothing to do
       return state;
   }
-};
+}

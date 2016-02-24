@@ -3,7 +3,7 @@ import { UPDATE_LOCATION } from 'react-router-redux';
 const initialState = 'home';
 
 export default function tabLocation(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case UPDATE_LOCATION:
       const { payload } = action;
 
@@ -11,9 +11,9 @@ export default function tabLocation(state = initialState, action) {
         // if state is not present then we do URL ninjitsu trying to get a
         // a proper state from URL
 
-        const [, tabLocation] = payload.pathname.split('/');
+        const [, urlTabLocation] = payload.pathname.split('/');
 
-        return tabLocation.length ? tabLocation : state;
+        return urlTabLocation.length ? urlTabLocation : state;
       }
 
       return action.payload.state.tabLocation || state;
@@ -22,4 +22,4 @@ export default function tabLocation(state = initialState, action) {
       // nothing to do
       return state;
   }
-};
+}

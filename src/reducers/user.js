@@ -6,7 +6,7 @@ const initialState = {
 };
 
 export default function user(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case types.CHANGE_VALUE:
       return {
         ...state,
@@ -17,4 +17,4 @@ export default function user(state = initialState, action) {
       // nothing to do
       return state;
   }
-};
+}
