@@ -16,7 +16,7 @@ store.dispatch(initApp());
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Redirect from='/' to='home' />
+      <Redirect from="/" to="home" />
       {routes}
     </Router>
   </Provider>,

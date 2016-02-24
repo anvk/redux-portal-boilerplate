@@ -11,7 +11,7 @@ function mapStateToProps(state) {
   return {
     tabLocation
   };
-};
+}
 
 class HeaderContainer extends Component {
   _onNavigate = (tabLocation, realLocation) => {
@@ -19,14 +19,11 @@ class HeaderContainer extends Component {
       pushRoute
     } = this.props;
 
-    realLocation = realLocation || '/' + tabLocation;
-
     return event => {
-      const { target } = event;
       event.preventDefault();
 
       pushRoute({
-        pathname: realLocation,
+        pathname: realLocation || `/${tabLocation}`,
         state: {
           tabLocation
         }
@@ -39,10 +36,18 @@ class HeaderContainer extends Component {
       tabLocation
     } = this.props;
 
-    return <Header
-      tabLocation={tabLocation}
-      onNavigate={this._onNavigate} />;
+    return (
+      <Header
+        tabLocation={tabLocation}
+        onNavigate={this._onNavigate}
+      />
+    );
   }
+}
+
+HeaderContainer.propTypes = {
+  tabLocation: PropTypes.string,
+  pushRoute: PropTypes.func.isRequired
 };
 
 export default connect(

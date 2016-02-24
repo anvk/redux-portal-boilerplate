@@ -29,4 +29,4 @@ export default function configureStore(initialState) {
   reduxRouterMiddleware.listenForReplays(store);
 
   return store;
-};
+}

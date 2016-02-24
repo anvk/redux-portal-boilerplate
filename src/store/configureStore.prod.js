@@ -15,4 +15,4 @@ export default function configureStore(initialState) {
   const store = finalCreateStore(rootReducer, initialState);
 
   return store;
-};
+}
