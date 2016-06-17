@@ -4,3 +4,5 @@ export Home from './Home/Home.js';
 export Header from './Header/Header.js';
 export Footer from './Footer/Footer.js';
 export Counter from './Counter/Counter.js';
+export LoginPage from './LoginPage/LoginPage.js';
+export UserHeader from './UserHeader/UserHeader.js';

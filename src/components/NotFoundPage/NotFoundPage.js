@@ -7,7 +7,9 @@ class NotFoundPage extends Component {
         <div className="page-header">
           <h1>Page not found...</h1>
         </div>
-        <p className="lead">Ooops! But I cannot find the page you are looking for...</p>
+        <p className="lead">
+          Ooops! But I cannot find the page you are looking for...
+        </p>
       </div>
     );
   }

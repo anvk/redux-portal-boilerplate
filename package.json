@@ -1,6 +1,6 @@
 {
   "name": "redux-portal-boilerplate",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "author": "anvk",
   "description": "A boilerplate to create a portal website using Redux & Bootstrap & Redux Dev Tools Extension.",
   "contributors": [
@@ -37,8 +37,10 @@
     "bootstrap": "3.3.5",
     "jquery": "2.1.4",
     "promise": "7.1.1",
-    "react": "0.14.2",
-    "react-dom": "0.14.2",
+    "query-params": "0.0.1",
+    "react": "0.14.8",
+    "react-dom": "0.14.8",
+    "react-gravatar": "2.4.3",
     "react-redux": "4.4.0",
     "react-router": "2.0.0",
     "react-router-redux": "3.0.0",

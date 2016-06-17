@@ -5,9 +5,6 @@ import { routeActions } from 'react-router-redux';
 class User extends Component {
   render() {
     const {
-      firstName,
-      lastName,
-      profession,
       pushRoute,
       onChange
     } = this.props;
@@ -19,17 +16,17 @@ class User extends Component {
           <input
             type="text"
             name="firstName"
-            value={firstName}
+            value={this.props.firstName}
             onChange={onChange}
           />
           Last Name:
           <input
             type="text"
             name="lastName"
-            value={lastName}
+            value={this.props.lastName}
             onChange={onChange}
           />
-          is a {profession}
+          is a {this.props.profession}
         </div>
 
         <div className="row">
@@ -60,8 +57,7 @@ User.propTypes = {
   pushRoute: PropTypes.func.isRequired
 };
 
-export default connect(
-  null,
+export default connect(undefined,
   {
     pushRoute: routeActions.push
   }

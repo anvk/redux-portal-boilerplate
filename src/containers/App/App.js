@@ -1,51 +1,66 @@
-require('../../../node_modules/bootstrap/dist/css/bootstrap.min.css');
-require('../../../node_modules/bootstrap/dist/js/bootstrap.min.js');
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../../../node_modules/bootstrap/dist/js/bootstrap.min.js';
 
-require('./app.less');
+import './app.less';
 
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { routeActions } from 'react-router-redux';
 import { HeaderContainer } from '../';
 import { Footer } from '../../components';
+import { checkAuth } from '../../reducers/auth.js';
+import params from 'query-params';
+import { LOGIN_URL } from '../../constants/constants.js';
+import * as loginPageActions from '../../actions/loginPageActions.js';
 
 class App extends Component {
-  render() {
+  componentWillMount() {
+    this._checkAuth();
+  }
+
+  componentWillUpdate() {
+    this._checkAuth();
+  }
+
+  _checkAuth = () => {
     const {
-      pushRoute,
-      children
+      auth,
+      replaceRoute,
+      location,
+      logout
     } = this.props;
 
+    if (!checkAuth(auth)) {
+      const args = params.encode({ url: location.pathname + location.search });
+      logout();
+      replaceRoute(`${LOGIN_URL}?${args}`);
+    }
+  };
+
+  render() {
     return (
       <div>
         <HeaderContainer />
-
-        <div className="container">
-          <div className="col-md-12 space-below">
-            <button
-              className="btn btn-default"
-              onClick={() => pushRoute('/foo')}
-            >
-              Go to /foo
-            </button>
+          <div className="container-fluid">
+            {this.props.children}
           </div>
-
-          <div className="col-md-12">{children}</div>
-        </div>
-
         <Footer />
       </div>
     );
   }
 }
 
-App.propTypes = {
-  children: PropTypes.object.isRequired,
-  pushRoute: PropTypes.func.isRequired
-};
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+    location: state.routing.location
+  };
+}
 
-export default connect(undefined,
+export default connect(
+  mapStateToProps,
   {
-    pushRoute: routeActions.push
+    replaceRoute: routeActions.replace,
+    logout: loginPageActions.logout
   }
 )(App);
