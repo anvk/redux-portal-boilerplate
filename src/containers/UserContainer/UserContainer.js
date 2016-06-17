@@ -4,30 +4,14 @@ import { changeValue } from '../../actions/userActions.js';
 import { User } from '../../components';
 import { profession } from '../../../config/config.json';
 
-function mapStateToProps(state) {
-  const {
-    firstName,
-    lastName
-  } = state.user;
-
-  return {
-    firstName,
-    lastName
-  };
-}
-
 class UserContainer extends Component {
   render() {
-    const {
-      firstName,
-      lastName,
-      changeValue
-    } = this.props;
+    const { changeValue } = this.props;
 
     return (
       <User
-        firstName={firstName}
-        lastName={lastName}
+        firstName={this.props.firstName}
+        lastName={this.props.lastName}
         onChange={event => {
           const { name, value } = event.target;
           changeValue(name, value);
@@ -38,11 +22,9 @@ class UserContainer extends Component {
   }
 }
 
-UserContainer.propTypes = {
-  firstName: PropTypes.string,
-  lastName: PropTypes.string,
-  changeValue: PropTypes.func.isRequired
-};
+function mapStateToProps(state) {
+  return { ...state.user };
+}
 
 export default connect(
   mapStateToProps,

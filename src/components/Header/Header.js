@@ -1,11 +1,17 @@
 import React, { Component, PropTypes } from 'react';
+import { UserHeader } from '../';
+
+const TAB_HOME = 'home';
+const TAB_COUNTER = 'counter';
+const TAB_USER = 'user';
 
 class Header extends Component {
   render() {
-    const {
-      tabLocation,
-      onNavigate
-    } = this.props;
+    const { onNavigate, onLogout } = this.props;
+
+    const getActiveClass = (tabLocation) => {
+      return tabLocation === this.props.tabLocation ? 'active' : '';
+    };
 
     return (
       <nav className="navbar navbar-default navbar-fixed-top">
@@ -23,19 +29,52 @@ class Header extends Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="#">Redux Portal Boilerplate</a>
+            <a
+              className="navbar-brand"
+              href="/"
+              onClick={onNavigate('home', '/')}
+            >
+              Redux Portal Boilerplate
+            </a>
           </div>
 
-          <div id="project-navbar-collapse" className="navbar-collapse collapse">
+          <div
+            id="project-navbar-collapse"
+            className="navbar-collapse collapse"
+          >
             <ul className="nav navbar-nav">
-              <li role="presentation" className={tabLocation === 'home' ? 'active' : ''}>
-                <a href="/" onClick={onNavigate('home', '/')}>Home</a>
+              <li
+                role="presentation"
+                className={getActiveClass(TAB_HOME)}
+              >
+                <a
+                  href="/"
+                  onClick={onNavigate('home', '/')}
+                >
+                  Home
+                </a>
               </li>
-              <li role="presentation" className={tabLocation === 'counter' ? 'active' : ''}>
-                <a href="/counter" onClick={onNavigate('counter')}>Counter</a>
+              <li
+                role="presentation"
+                className={getActiveClass(TAB_COUNTER)}
+              >
+                <a
+                  href="/counter"
+                  onClick={onNavigate('counter')}
+                >
+                  Counter
+                </a>
               </li>
-              <li role="presentation" className={tabLocation === 'user' ? 'active' : ''}>
-                <a href="/user" onClick={onNavigate('user')}>User</a>
+              <li
+                role="presentation"
+                className={getActiveClass(TAB_USER)}
+              >
+                <a
+                  href="/user"
+                  onClick={onNavigate('user')}
+                >
+                  User
+                </a>
               </li>
               <li role="presentation" className="dropdown">
                 <a
@@ -46,8 +85,7 @@ class Header extends Component {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Complex Menu
-                  <span className="caret"></span>
+                  Complex Menu <span className="caret"></span>
                 </a>
                 <ul className="dropdown-menu">
                   <li><a href="#">Item 1</a></li>
@@ -58,6 +96,11 @@ class Header extends Component {
                 </ul>
               </li>
             </ul>
+            <UserHeader
+              name={this.props.name}
+              email={this.props.email}
+              onLogout={onLogout}
+            />
           </div>
         </div>
       </nav>
@@ -67,7 +110,9 @@ class Header extends Component {
 
 Header.propTypes = {
   tabLocation: PropTypes.string,
-  onNavigate: PropTypes.func.isRequired
+  name: PropTypes.string,
+  onNavigate: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired
 };
 
 export default Header;

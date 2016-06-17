@@ -6,7 +6,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var version = require('../package.json').version;
 
 config.devServer = {
-  contentBase: 'dist/',
+  contentBase: 'static/',
   historyApiFallback: true
 };
 
