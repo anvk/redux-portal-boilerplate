@@ -1,48 +1,51 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { routeActions } from 'react-router-redux';
 import { LoginPage } from '../../components';
-import { checkAuth } from '../../reducers/auth.js';
+import { push as pushRoute } from 'react-router-redux';
 import * as loginPageActions from '../../actions/loginPageActions.js';
 import { HOME_URL } from '../../constants/constants.js';
+import toastr from 'toastr';
+
+// This block is required for Material-UI to work with React 15.x
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+const lightMuiTheme = getMuiTheme(lightBaseTheme);
 
 class LoginPageContainer extends Component {
-  componentWillMount() {
-    if (checkAuth(this.props.auth)) {
-      this.props.replaceRoute(HOME_URL);
-    }
-  }
-
   render() {
     const {
       changeValue,
-      replaceRoute,
       pushRoute,
       login,
-      queryParams,
+      url,
       ...props
     } = this.props;
 
-    const { url } = queryParams;
+    const { email, password } = props;
 
     return (
-      <LoginPage
-        {...props}
-        onChange={changeValue}
-        onLogin={(email, password) => {
-          login(email, password)
-            .then(() => pushRoute(url || HOME_URL));
-        }}
-      />
+      <MuiThemeProvider muiTheme={lightMuiTheme}>
+        <LoginPage
+          {...props}
+          onChange={changeValue}
+          onLogin={() =>
+            login(email, password)
+              .then(() => pushRoute(url || HOME_URL))
+          }
+          onForgotPassword={() =>
+            toastr.success('Use anvk/admin or anvk2/user credentials')
+          }
+        />
+      </MuiThemeProvider>
     );
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   return {
     ...state.loginPage,
-    auth: state.auth,
-    queryParams: state.routing.location.query
+    url: ownProps.location.query.url
   };
 }
 
@@ -51,7 +54,6 @@ export default connect(
   {
     changeValue: loginPageActions.changeValue,
     login: loginPageActions.login,
-    pushRoute: routeActions.push,
-    replaceRoute: routeActions.replace
+    pushRoute
   }
 )(LoginPageContainer);

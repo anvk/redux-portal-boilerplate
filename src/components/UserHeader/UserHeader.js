@@ -14,17 +14,17 @@ class UserHeader extends Component {
 
   render() {
     return (
-      <ul className='nav navbar-nav navbar-right'>
-        <li className='dropdown'>
+      <ul className="nav navbar-nav navbar-right">
+        <li className="dropdown">
           <a
-            href='#'
-            className='dropdown-toggle userheader-link'
-            data-toggle='dropdown'
-            role='button'
-            aria-haspopup='true'
-            aria-expanded='false'
+            href="#"
+            className="dropdown-toggle userheader-link"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
           >
-            <span className='caret'></span>
+            <span className="caret"></span>
             <Gravatar
               className="userheader-custom"
               rating="pg"
@@ -34,10 +34,10 @@ class UserHeader extends Component {
               {` ${this.props.name}`}
             </span>
           </a>
-          <ul className='dropdown-menu'>
+          <ul className="dropdown-menu">
             <li>
               <a
-                href='#'
+                href="#"
                 onClick={this._logout}
               >
                 Logout

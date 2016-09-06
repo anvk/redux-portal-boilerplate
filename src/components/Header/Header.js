@@ -1,21 +1,35 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import { UserHeader } from '../';
-
-const TAB_HOME = 'home';
-const TAB_COUNTER = 'counter';
-const TAB_USER = 'user';
+import {
+  TAB_REPOS,
+  TAB_FOLLOWERS,
+  TAB_MISC,
+  TAB_USERS,
+  TAB_USER
+} from '../../constants/constants.js';
+import { headerAuth } from '../../constants/auth.js';
+import { checkAuth } from '../../reducers/auth.js';
+import { fixUrl } from '../../utils/utils.js';
 
 class Header extends Component {
   render() {
-    const { onNavigate, onLogout } = this.props;
+    const getHeaderLinkClass = (tabLocation) => {
+      const hasAuth = checkAuth({
+        authRole: this.props.authRole,
+        ...headerAuth[tabLocation]
+      });
 
-    const getActiveClass = (tabLocation) => {
+      if (!hasAuth) {
+        return 'hidden';
+      }
+
       return tabLocation === this.props.tabLocation ? 'active' : '';
     };
 
     return (
       <nav className="navbar navbar-default navbar-fixed-top">
-        <div className="container-fluid">
+        <div className="container">
           <div className="navbar-header">
             <button
               type="button"
@@ -29,13 +43,9 @@ class Header extends Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a
-              className="navbar-brand"
-              href="/"
-              onClick={onNavigate('home', '/')}
-            >
+            <Link to={fixUrl('/')} className="navbar-brand">
               Redux Portal Boilerplate
-            </a>
+            </Link>
           </div>
 
           <div
@@ -45,36 +55,33 @@ class Header extends Component {
             <ul className="nav navbar-nav">
               <li
                 role="presentation"
-                className={getActiveClass(TAB_HOME)}
+                className={getHeaderLinkClass(TAB_USER)}
               >
-                <a
-                  href="/"
-                  onClick={onNavigate('home', '/')}
-                >
-                  Home
-                </a>
+                <Link to={fixUrl('/user')}>User Data</Link>
               </li>
               <li
                 role="presentation"
-                className={getActiveClass(TAB_COUNTER)}
+                className={getHeaderLinkClass(TAB_USERS)}
               >
-                <a
-                  href="/counter"
-                  onClick={onNavigate('counter')}
-                >
-                  Counter
-                </a>
+                <Link to={fixUrl('/users')}>Users (Admin Only)</Link>
               </li>
               <li
                 role="presentation"
-                className={getActiveClass(TAB_USER)}
+                className={getHeaderLinkClass(TAB_REPOS)}
               >
-                <a
-                  href="/user"
-                  onClick={onNavigate('user')}
-                >
-                  User
-                </a>
+                <Link to={fixUrl('/repos')}>Repos</Link>
+              </li>
+              <li
+                role="presentation"
+                className={getHeaderLinkClass(TAB_FOLLOWERS)}
+              >
+                <Link to={fixUrl('/followers')}>Followers (User only)</Link>
+              </li>
+              <li
+                role="presentation"
+                className={getHeaderLinkClass(TAB_MISC)}
+              >
+                <Link to={fixUrl('/misc')}>GitHub Miscellaneous</Link>
               </li>
               <li role="presentation" className="dropdown">
                 <a
@@ -99,7 +106,7 @@ class Header extends Component {
             <UserHeader
               name={this.props.name}
               email={this.props.email}
-              onLogout={onLogout}
+              onLogout={this.props.onLogout}
             />
           </div>
         </div>
@@ -111,7 +118,8 @@ class Header extends Component {
 Header.propTypes = {
   tabLocation: PropTypes.string,
   name: PropTypes.string,
-  onNavigate: PropTypes.func.isRequired,
+  email: PropTypes.string,
+  authRole: PropTypes.number,
   onLogout: PropTypes.func.isRequired
 };
 

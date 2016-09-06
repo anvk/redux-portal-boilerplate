@@ -1,26 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { routeActions } from 'react-router-redux';
 import { Header } from '../../components';
+import { push as pushRoute } from 'react-router-redux';
 import * as loginPageActions from '../../actions/loginPageActions.js';
 import { LOGIN_URL } from '../../constants/constants.js';
 
 class HeaderContainer extends Component {
-  _onNavigate = (tabLocation, realLocation) => {
-    const { pushRoute } = this.props;
-
-    return (event) => {
-      event.preventDefault();
-
-      pushRoute({
-        pathname: realLocation || `/${tabLocation}`,
-        state: {
-          tabLocation
-        }
-      });
-    };
-  };
-
   render() {
     const {
       tabLocation,
@@ -33,13 +18,12 @@ class HeaderContainer extends Component {
       <Header
         name={auth.name}
         email={auth.email}
+        authRole={auth.authRole}
         onLogout={() => {
           logout();
-
           pushRoute(LOGIN_URL);
         }}
         tabLocation={tabLocation}
-        onNavigate={this._onNavigate}
       />
     );
   }
@@ -47,7 +31,7 @@ class HeaderContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    tabLocation: state.tabLocation,
+    tabLocation: state.shared.tabLocation,
     auth: state.auth
   };
 }
@@ -56,6 +40,6 @@ export default connect(
   mapStateToProps,
   {
     logout: loginPageActions.logout,
-    pushRoute: routeActions.push
+    pushRoute
   }
 )(HeaderContainer);

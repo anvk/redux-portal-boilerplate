@@ -1,34 +1,47 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { changeValue } from '../../actions/userActions.js';
 import { User } from '../../components';
-import { profession } from '../../../config/config.json';
+import * as userActions from '../../actions/userActions.js';
 
 class UserContainer extends Component {
+  componentWillMount() {
+    const {
+      loaded,
+      search,
+      username
+    } = this.props;
+
+    if (loaded) {
+      return;
+    }
+
+    search({ username });
+  }
+
   render() {
-    const { changeValue } = this.props;
+    const {
+      username,
+      search,
+      changeValue,
+      ...props
+    } = this.props;
 
     return (
-      <User
-        firstName={this.props.firstName}
-        lastName={this.props.lastName}
-        onChange={event => {
-          const { name, value } = event.target;
-          changeValue(name, value);
-        }}
-        profession={profession}
-      />
+      <div className="col-md-6">
+        <User {...props} onChange={changeValue} />
+      </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { ...state.user };
+  return { username: state.auth.username, ...state.user };
 }
 
 export default connect(
   mapStateToProps,
   {
-    changeValue
+    changeValue: userActions.changeValue,
+    search: userActions.search
   }
 )(UserContainer);
