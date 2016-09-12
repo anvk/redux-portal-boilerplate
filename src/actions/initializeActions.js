@@ -1,27 +1,52 @@
 import Promise from 'promise';
+import toastr from 'toastr';
+import { isObject } from 'util';
+import * as githubApi from '../api/githubApi.js';
 
 import * as types from '../constants/actionTypes.js';
-import * as stubApi from '../api/stubApi.js';
 
-export const pageError = (error) => ({
-  type: types.PAGE_ERROR,
-  error
-});
+export const pageError = (error) => {
+  if (isObject(error) && error.response) {
+    const { body, text } = error.response;
+    let errorMessage;
 
-export const initialize = (data) => ({
-  type: types.INITIALIZE,
-  value: data
-});
+    if (body && body.failed && body.failed.length) {
+      errorMessage = body.failed[0].errorMessage;
+    } else if (body && body.errorMessage) {
+      errorMessage = body.errorMessage;
+    }
 
-const initialCounterLoaded = state => state.counter !== null;
-
-export const initApp = () => (dispatch, getState) => {
-  // do not dispatch if we already got the number
-  if (initialCounterLoaded(getState())) {
-    return Promise.resolve();
+    toastr.error(errorMessage || text);
+    return { type: types.PAGE_ERROR, error: errorMessage || text };
   }
 
-  stubApi.getInitialCounter()
-  .then(data => dispatch(initialize(data)))
-  .catch(error => dispatch(pageError(error)));
+  toastr.error(error);
+
+  return { type: types.PAGE_ERROR, error };
+};
+
+export const initialize = (data) => ({ type: types.INITIALIZE, ...data });
+
+export const initApp = () => {
+  return (dispatch) => {
+    Promise.all([
+      githubApi.getEmojis(),
+      githubApi.getGitignoreTemplates()
+    ])
+    .then(values => {
+      const [ emojis, gitignoreTemplates ] = values;
+
+      let emojisArray = [];
+
+      // convert object into array of objects
+      for (let emojiText in emojis) {
+        if (emojis.hasOwnProperty(emojiText)) {
+          emojisArray.push({ emojiText, emojiImage: emojis[emojiText] });
+        }
+      }
+
+      dispatch(initialize({ emojis: emojisArray, gitignoreTemplates }));
+    })
+    .catch(error => dispatch(pageError(error)));
+  };
 };

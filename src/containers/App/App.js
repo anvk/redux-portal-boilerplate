@@ -1,66 +1,34 @@
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../../../node_modules/bootstrap/dist/js/bootstrap.min.js';
+import '../../../node_modules/bootstrap/dist/js/bootstrap.js';
+import '../../../node_modules/ladda/dist/ladda-themeless.min.css';
+import '../../../node_modules/ladda/dist/ladda.min.js';
+import '../../../node_modules/ladda/dist/spin.min.js';
+import '../../../node_modules/toastr/build/toastr.min.css';
 
 import './app.less';
 
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { routeActions } from 'react-router-redux';
+import React, { Component } from 'react';
 import { HeaderContainer } from '../';
 import { Footer } from '../../components';
-import { checkAuth } from '../../reducers/auth.js';
-import params from 'query-params';
-import { LOGIN_URL } from '../../constants/constants.js';
-import * as loginPageActions from '../../actions/loginPageActions.js';
 
-class App extends Component {
-  componentWillMount() {
-    this._checkAuth();
-  }
+// This block is required for Material-UI to work with React 15.x
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+const lightMuiTheme = getMuiTheme(lightBaseTheme);
 
-  componentWillUpdate() {
-    this._checkAuth();
-  }
-
-  _checkAuth = () => {
-    const {
-      auth,
-      replaceRoute,
-      location,
-      logout
-    } = this.props;
-
-    if (!checkAuth(auth)) {
-      const args = params.encode({ url: location.pathname + location.search });
-      logout();
-      replaceRoute(`${LOGIN_URL}?${args}`);
-    }
-  };
-
+export default class App extends Component {
   render() {
     return (
-      <div>
-        <HeaderContainer />
-          <div className="container-fluid">
-            {this.props.children}
-          </div>
-        <Footer />
-      </div>
+      <MuiThemeProvider muiTheme={lightMuiTheme}>
+        <div>
+          <HeaderContainer />
+            <div className="container-fluid">
+              {this.props.children}
+            </div>
+          <Footer />
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    auth: state.auth,
-    location: state.routing.location
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  {
-    replaceRoute: routeActions.replace,
-    logout: loginPageActions.logout
-  }
-)(App);

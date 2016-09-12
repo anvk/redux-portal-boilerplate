@@ -1,7 +1,7 @@
 import './footer.less';
 
 import React, { Component } from 'react';
-import { author } from '../../../package.json';
+import { author, name } from '../../../package.json';
 
 class Footer extends Component {
   render() {
@@ -9,7 +9,25 @@ class Footer extends Component {
       <footer className="footer">
         <div className="container">
           <p className="text-muted">
-            made with love by <strong>{author}</strong>
+            {'Project '}
+            <strong>
+              <a
+                href="https://github.com/anvk/redux-portal-boilerplate"
+                alt={name}
+              >
+                {name}
+              </a>
+            </strong>
+            {' Created by '}
+            <strong>
+              <a
+                href="https://github.com/anvk"
+                alt={author}
+              >
+                {author}
+              </a>
+            </strong>
+            {' 2016'}
           </p>
         </div>
       </footer>

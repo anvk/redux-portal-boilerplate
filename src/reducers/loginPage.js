@@ -1,8 +1,8 @@
 import * as types from '../constants/actionTypes.js';
 
 const initialState = {
-  email: undefined,
-  password: undefined,
+  email: '',
+  password: '',
   isTryingToLogin: false
 };
 

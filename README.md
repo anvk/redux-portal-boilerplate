@@ -6,18 +6,27 @@
 
 ![Screenshot 2](https://github.com/anvk/redux-portal-boilerplate/blob/master/screenshots/2.png)
 
+![Screenshot 3](https://github.com/anvk/redux-portal-boilerplate/blob/master/screenshots/3.png)
+
+![Screenshot 4](https://github.com/anvk/redux-portal-boilerplate/blob/master/screenshots/4.png)
+
 ##Technology Used for This Project
  - [Node](https://nodejs.org/en/)
  - [Webpack](https://webpack.github.io/)
  - [React](http://facebook.github.io/react/)
+ - [React Router](https://github.com/reactjs/react-router)
+ - [React Router Redux](https://github.com/reactjs/react-router-redux)
  - [Redux](http://redux.js.org/)
  - [Redux Dev Tools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
+ - [Material UI](http://www.material-ui.com/)
  - [Bootstrap](http://getbootstrap.com/)
  - [ES6 by Babel](https://babeljs.io/)
  - [LESS](http://lesscss.org/)
  - [ES2015](https://babeljs.io/docs/learn-es2015/)
  - [Gravatar](https://en.gravatar.com/)
+ - [Ladda Buttons](https://github.com/hakimel/Ladda)
  - [Browser Cache](https://developer.mozilla.org/en/docs/Web/API/Window/localStorage)
+ - [GitHub API](https://developer.github.com/v3/)
 
 ## How to Run Locally for Development
 

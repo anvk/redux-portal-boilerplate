@@ -17,7 +17,7 @@ export function read(name) {
     const cacheStr = localStorage.getItem(name);
 
     return cacheStr ? JSON.parse(cacheStr) : undefined;
-  } catch(e) {
+  } catch (e) {
     return;
   }
 }

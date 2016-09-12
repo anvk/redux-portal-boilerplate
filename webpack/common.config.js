@@ -1,6 +1,8 @@
 'use strict';
 
 var path = require('path');
+var config = require('../config/config.json');
+var publicPath = config.publicPath;
 
 module.exports = {
   entry: [
@@ -10,7 +12,7 @@ module.exports = {
   output: {
     path: path.resolve('dist'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: publicPath
   },
 
   module: {

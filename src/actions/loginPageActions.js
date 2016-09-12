@@ -1,6 +1,6 @@
 import * as types from '../constants/actionTypes.js';
 import * as authApi from '../api/authApi.js';
-import { pageAlert, pageError } from './initializeActions.js';
+import { pageError } from './initializeActions.js';
 
 export const changeValue = (name, value) => ({
   type: types.LOGIN_FORM_CHANGE_VALUE,
@@ -29,15 +29,15 @@ export const login = (email, password) => {
   return (dispatch) => {
     dispatch(startLogin());
 
-    const loginPromise = authApi.authenticate(email, password);
+    const promise = authApi.authenticate(email, password);
 
-    loginPromise
+    promise
       .then(result => dispatch(loginSuccess(result)))
       .catch(error => {
         dispatch(loginFailure());
         dispatch(pageError(error));
       });
 
-    return loginPromise;
+    return promise;
   };
 };

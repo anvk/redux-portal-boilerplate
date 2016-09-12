@@ -1,4 +1,17 @@
 {
-  "startingNumber": 5,
-  "profession": "developer"
+  "publicPath": "/",
+  "githubApi": {
+    "token": "Maybe you need a secret key to pass",
+    "timeout": 6000,
+    "urls": {
+      "base": "https://api.github.com/",
+      "repos": "users/%s/repos",
+      "users": "users",
+      "user": "users/%s",
+      "followers": "users/%s/followers",
+      "emojis": "emojis",
+      "gitignoreTemplates": "gitignore/templates",
+      "anotherRequest": "users/%s/anotherRequest"
+    }
+  }
 }

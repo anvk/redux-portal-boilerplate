@@ -1,64 +1,43 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { routeActions } from 'react-router-redux';
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardText
+} from 'material-ui/Card';
 
 class User extends Component {
   render() {
-    const {
-      pushRoute,
-      onChange
-    } = this.props;
-
     return (
-      <div className="col-md-12">
-        <div className="row">
-          First Name:
-          <input
-            type="text"
-            name="firstName"
-            value={this.props.firstName}
-            onChange={onChange}
-          />
-          Last Name:
-          <input
-            type="text"
-            name="lastName"
-            value={this.props.lastName}
-            onChange={onChange}
-          />
-          is a {this.props.profession}
-        </div>
-
-        <div className="row">
-          <button
-            type="button"
-            className="btn btn-default"
-            onClick={() => pushRoute({
-              pathname: '/counter/100',
-              state: {
-                counter: 100,
-                tabLocation: 'counter'
-              }
-            })}
-          >
-            go to 100 !
-          </button>
-        </div>
-      </div>
+      <Card>
+        <CardHeader
+          title={this.props.name}
+          subtitle={this.props.email}
+          avatar={this.props.avatar_url}
+        />
+        <CardTitle
+          title={this.props.login}
+          subtitle="* This data is pulled when UserInfo is loaded for the first time1"
+        />
+        <CardText>
+          A boilerplate to create a portal website using
+          Redux & Bootstrap & Redux Dev Tools Extension.
+        </CardText>
+      </Card>
     );
   }
 }
 
 User.propTypes = {
-  firstName: PropTypes.string,
-  lastName: PropTypes.string,
-  profession: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-  pushRoute: PropTypes.func.isRequired
+  login: PropTypes.string,
+  name: PropTypes.string,
+  url: PropTypes.string,
+  avatar_url: PropTypes.string,
+  location: PropTypes.string,
+  email: PropTypes.string,
+  isFetching: PropTypes.bool,
+  loaded: PropTypes.bool,
+  onChange: PropTypes.func.isRequired
 };
 
-export default connect(undefined,
-  {
-    pushRoute: routeActions.push
-  }
-)(User);
+export default User;

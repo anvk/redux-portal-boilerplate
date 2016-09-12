@@ -1,18 +1,22 @@
 import { combineReducers } from 'redux';
-import { routeReducer } from 'react-router-redux';
+import { routerReducer } from 'react-router-redux';
 
-import counter from './counter.js';
 import user from './user.js';
-import tabLocation from './tabLocation.js';
 import auth from './auth.js';
 import loginPage from './loginPage.js';
+import shared from './shared.js';
+import repos from './repos.js';
+import users from './users.js';
+import followers from './followers.js';
 
 export default combineReducers({
-  tabLocation,
-  counter,
+  repos,
   user,
   auth,
   loginPage,
+  shared,
+  users,
+  followers,
 
-  routing: routeReducer
+  routing: routerReducer
 });
