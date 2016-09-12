@@ -6,6 +6,10 @@
 
 ![Screenshot 2](https://github.com/anvk/redux-portal-boilerplate/blob/master/screenshots/2.png)
 
+![Screenshot 3](https://github.com/anvk/redux-portal-boilerplate/blob/master/screenshots/3.png)
+
+![Screenshot 4](https://github.com/anvk/redux-portal-boilerplate/blob/master/screenshots/4.png)
+
 ##Technology Used for This Project
  - [Node](https://nodejs.org/en/)
  - [Webpack](https://webpack.github.io/)

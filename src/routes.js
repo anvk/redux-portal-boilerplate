@@ -59,13 +59,12 @@ class Routes extends Component {
       return;
     }
     const { location } = nextState;
+    const url = location.pathname.replace(publicPath, '') + location.search;
 
-    const args = params.encode({
-      url: location.pathname.replace(publicPath, '') + location.search
-    });
+    const postFix = url ? `?${params.encode({ url })}` : '';
 
     logout();
-    replace(fixUrl(`${LOGIN_URL}?${args}`));
+    replace(fixUrl(`${LOGIN_URL}${postFix}`));
   };
 
   render() {
