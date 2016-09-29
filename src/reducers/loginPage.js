@@ -1,6 +1,6 @@
 import * as types from '../constants/actionTypes.js';
 
-const initialState = {
+export const initialState = {
   email: '',
   password: '',
   isTryingToLogin: false
