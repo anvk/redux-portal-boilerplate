@@ -7,7 +7,10 @@ var version = require('../package.json').version;
 
 config.devServer = {
   contentBase: 'static/',
-  historyApiFallback: true
+  historyApiFallback: true,
+  proxy: {
+    // '/api/*': 'http://localhost:5000' // point all requests which have /api/* in them to localhost:5000
+  },
 };
 
 config.plugins = [
